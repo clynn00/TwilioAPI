@@ -1,0 +1,16 @@
+#In Repl, click Packages search for Twilio-Ruby and install it (5 mins)
+require 'twilio-ruby'
+ 
+#Enter your Twilio account ID and token below:
+account_sid = 'XXXXXX'
+auth_token = 'YYYYYY'
+
+#This creates a variable called 'client' that inherits all the abilities from the Twilio gem
+@client = Twilio::REST::Client.new account_sid, auth_token
+message = @client.messages.create(
+    body: "Hello from Ruby",
+    to: "+1AAAAA",    # Replace with your phone number
+    from: "+1BBBBB")  # Replace with your Twilio number
+
+puts "Message sent successfully, nice job Joe! ID:" + message.sid
+#puts message.sid actually sends the message to Twilio to distribute.
